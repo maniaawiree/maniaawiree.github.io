@@ -1,0 +1,20 @@
+body {
+    max-width: 1400px;
+    margin: 20px auto 0;
+    padding: 1rem;
+    font-size: 14px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.layout pre {
+    margin: 0;
+}
+
+.layout pre:last-child {
+    margin-left: 40px;
+}
