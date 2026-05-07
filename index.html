@@ -200,25 +200,34 @@
                 return String(s).toLowerCase().trim().replace(/\s+/g, "-");
             }
             function parseContentTxt(text) {
-                const chunks = text.split(/^---\s*$/m);
-                const entries = [];
-                for (let i = 0; i + 1 < chunks.length; i += 2) {
-                    const meta = {};
-                    chunks[i]
-                        .trim()
-                        .split("\n")
-                        .forEach((line) => {
-                            const idx = line.indexOf(":");
-                            if (idx === -1) return;
-                            const key = line.slice(0, idx).trim();
-                            const val = line.slice(idx + 1).trim();
-                            if (key) meta[key] = val;
-                        });
-                    if (!meta.id) continue;
-                    meta.description = chunks[i + 1].trim();
-                    entries.push(meta);
-                }
-                return entries;
+                return text
+                    .split(/^---\s*$/m)
+                    .map((chunk) => chunk.trim())
+                    .filter(Boolean)
+                    .map((chunk) => {
+                        const obj = {};
+                        let currentKey = "";
+                        chunk
+                            .trim()
+                            .split("\n")
+                            .forEach((line) => {
+                                const idx = line.indexOf(":");
+                                if (idx !== -1) {
+                                    const key = line.slice(0, idx).trim();
+                                    const val = line.slice(idx + 1).trim();
+                                    if (!key) return;
+                                    currentKey = key;
+                                    obj[key] = val || [];
+                                    return;
+                                }
+                                if (!currentKey) return;
+                                if (!Array.isArray(obj[currentKey])) {
+                                    obj[currentKey] = [obj[currentKey]];
+                                }
+                                obj[currentKey].push(line.trim());
+                            });
+                        return obj;
+                    });
             }
             let data = {};
             (async () => {
@@ -227,8 +236,9 @@
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     const text = await res.text();
                     const entries = parseContentTxt(text);
+                    const works = entries.filter((e) => e.id);
                     const grouped = {};
-                    for (const e of entries) {
+                    for (const e of works) {
                         const slug = slugify(e.category || "");
                         if (!slug) continue;
                         if (!grouped[slug]) grouped[slug] = [];

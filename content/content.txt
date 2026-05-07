@@ -14,194 +14,194 @@ Appearances
 id: drawing-01
 title: Drawing / 01
 category: Drawings
+description: Ink on paper. Raw line, no erasing.
 ---
-Ink on paper. Raw line, no erasing.
 
 ---
 id: drawing-02
 title: Drawing / 02
 category: Drawings
+description: Charcoal study. Loose, fast.
 ---
-Charcoal study. Loose, fast.
 
 ---
 id: drawing-03
 title: Drawing / 03
 category: Drawings
+description: Pencil. Single sitting.
 ---
-Pencil. Single sitting.
 
 ---
 id: drawing-04
 title: Drawing / 04
 category: Drawings
+description: Marker on cardboard.
 ---
-Marker on cardboard.
 
 ---
 id: poem-01
 title: Poem / 01
 category: Poetry
+description: Three stanzas. Read top to bottom.
 ---
-Three stanzas. Read top to bottom.
 
 ---
 id: poem-02
 title: Poem / 02
 category: Poetry
+description: Found text, rearranged.
 ---
-Found text, rearranged.
 
 ---
 id: poem-03
 title: Poem / 03
 category: Poetry
+description: One line per breath.
 ---
-One line per breath.
 
 ---
 id: photograph-01
 title: Photograph / 01
 category: Photography
+description: 35mm. Available light.
 ---
-35mm. Available light.
 
 ---
 id: photograph-02
 title: Photograph / 02
 category: Photography
+description: Polaroid.
 ---
-Polaroid.
 
 ---
 id: photograph-03
 title: Photograph / 03
 category: Photography
+description: Long exposure, wind.
 ---
-Long exposure, wind.
 
 ---
 id: photograph-04
 title: Photograph / 04
 category: Photography
+description: Series of 12, untitled.
 ---
-Series of 12, untitled.
 
 ---
 id: video-01
 title: Video / 01
 category: Video
+description: Loop. 12 seconds. No sound.
 ---
-Loop. 12 seconds. No sound.
 
 ---
 id: video-02
 title: Video / 02
 category: Video
+description: Stop motion. Paper.
 ---
-Stop motion. Paper.
 
 ---
 id: video-03
 title: Video / 03
 category: Video
+description: Single take, 4 minutes.
 ---
-Single take, 4 minutes.
 
 ---
 id: digital-work-01
 title: Digital Work / 01
 category: Digital Work
+description: Generated, then hand-corrected.
 ---
-Generated, then hand-corrected.
 
 ---
 id: digital-work-02
 title: Digital Work / 02
 category: Digital Work
+description: Plotter print.
 ---
-Plotter print.
 
 ---
 id: digital-work-03
 title: Digital Work / 03
 category: Digital Work
+description: Browser-only piece.
 ---
-Browser-only piece.
 
 ---
 id: digital-work-04
 title: Digital Work / 04
 category: Digital Work
+description: Interactive, click to enter.
 ---
-Interactive, click to enter.
 
 ---
 id: hardware-01
 title: Hardware / 01
 category: Hardware
+description: Modular setup. In progress.
 ---
-Modular setup. In progress.
 
 ---
 id: hardware-02
 title: Hardware / 02
 category: Hardware
+description: Custom controller.
 ---
-Custom controller.
 
 ---
 id: hardware-03
 title: Hardware / 03
 category: Hardware
+description: Resonant body, contact mics.
 ---
-Resonant body, contact mics.
 
 ---
 id: sound-01
 title: Sound / 01
 category: Sound
+description: Noise. One take.
 ---
-Noise. One take.
 
 ---
 id: sound-02
 title: Sound / 02
 category: Sound
+description: Field recording, summer.
 ---
-Field recording, summer.
 
 ---
 id: sound-03
 title: Sound / 03
 category: Sound
+description: Drone, 20 minutes.
 ---
-Drone, 20 minutes.
 
 ---
 id: sound-04
 title: Sound / 04
 category: Sound
+description: Voice, untreated.
 ---
-Voice, untreated.
 
 ---
 id: appearance-01
 title: Appearance / 01
 category: Appearances
+description: Past event. Stage and crowd.
 ---
-Past event. Stage and crowd.
 
 ---
 id: appearance-02
 title: Appearance / 02
 category: Appearances
+description: Festival reading, 2024.
 ---
-Festival reading, 2024.
 
 ---
 id: appearance-03
 title: Appearance / 03
 category: Appearances
+description: Studio session, broadcast.
 ---
-Studio session, broadcast.
