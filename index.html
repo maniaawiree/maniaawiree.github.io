@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>Mania Monet</title>
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles.css?v=4" />
     </head>
     <body>
         <main class="layout">
@@ -19,12 +19,16 @@
                             style="--pos: 18%"
                         >
                             Drawings</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                     <li>
                         <button class="cat" data-id="poetry" style="--pos: 62%">
                             Poetry</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                     <li>
                         <button
@@ -33,17 +37,27 @@
                             style="--pos: 34%"
                         >
                             Photography</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                     <li>
                         <button class="cat" data-id="video" style="--pos: 78%">
                             Video</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                     <li>
-                        <button class="cat" data-id="digital" style="--pos: 8%">
+                        <button
+                            class="cat"
+                            data-id="digital-work"
+                            style="--pos: 8%"
+                        >
                             Digital Work</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                     <li>
                         <button
@@ -52,12 +66,16 @@
                             style="--pos: 50%"
                         >
                             Hardware</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                     <li>
                         <button class="cat" data-id="sound" style="--pos: 88%">
                             Sound</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                     <li>
                         <button
@@ -66,12 +84,20 @@
                             style="--pos: 24%"
                         >
                             Appearances</button
-                        ><span class="track"><span class="dot"></span><span class="shelf"></span></span>
+                        ><span class="track"
+                            ><span class="dot"></span><span class="shelf"></span
+                        ></span>
                     </li>
                 </ul>
             </nav>
 
             <section class="detail"></section>
+            <div class="modal" id="modal" hidden>
+                <button class="modal-close" id="modal-close" aria-label="Close">
+                    ×
+                </button>
+                <div class="modal-content"></div>
+            </div>
         </main>
 
         <div class="size-bar">
@@ -146,86 +172,137 @@
             if (!isDebug) {
                 document.querySelector(".size-bar").style.display = "none";
             }
-            const IMG = "assets/example.png";
-            const data = {
-                drawings: [
-                    { img: IMG, title: "Drawing / 01", desc: "Ink on paper. Raw line, no erasing." },
-                    { img: IMG, title: "Drawing / 02", desc: "Charcoal study. Loose, fast." },
-                    { img: IMG, title: "Drawing / 03", desc: "Pencil. Single sitting." },
-                    { img: IMG, title: "Drawing / 04", desc: "Marker on cardboard." },
-                ],
-                poetry: [
-                    { img: IMG, title: "Poem / 01", desc: "Three stanzas. Read top to bottom." },
-                    { img: IMG, title: "Poem / 02", desc: "Found text, rearranged." },
-                    { img: IMG, title: "Poem / 03", desc: "One line per breath." },
-                ],
-                photography: [
-                    { img: IMG, title: "Photograph / 01", desc: "35mm. Available light." },
-                    { img: IMG, title: "Photograph / 02", desc: "Polaroid, no scan." },
-                    { img: IMG, title: "Photograph / 03", desc: "Long exposure, wind." },
-                    { img: IMG, title: "Photograph / 04", desc: "Series of 12, untitled." },
-                ],
-                video: [
-                    { img: IMG, title: "Video / 01", desc: "Loop. 12 seconds. No sound." },
-                    { img: IMG, title: "Video / 02", desc: "Stop motion. Paper." },
-                    { img: IMG, title: "Video / 03", desc: "Single take, 4 minutes." },
-                ],
-                digital: [
-                    { img: IMG, title: "Digital Work / 01", desc: "Generated, then hand-corrected." },
-                    { img: IMG, title: "Digital Work / 02", desc: "Plotter print." },
-                    { img: IMG, title: "Digital Work / 03", desc: "Browser-only piece." },
-                    { img: IMG, title: "Digital Work / 04", desc: "Interactive, click to enter." },
-                ],
-                hardware: [
-                    { img: IMG, title: "Hardware / 01", desc: "Modular setup. In progress." },
-                    { img: IMG, title: "Hardware / 02", desc: "Custom controller." },
-                    { img: IMG, title: "Hardware / 03", desc: "Resonant body, contact mics." },
-                ],
-                sound: [
-                    { img: IMG, title: "Sound / 01", desc: "Noise. One take." },
-                    { img: IMG, title: "Sound / 02", desc: "Field recording, summer." },
-                    { img: IMG, title: "Sound / 03", desc: "Drone, 20 minutes." },
-                    { img: IMG, title: "Sound / 04", desc: "Voice, untreated." },
-                ],
-                appearances: [
-                    { img: IMG, title: "Appearance / 01", desc: "Past event. Stage and crowd." },
-                    { img: IMG, title: "Appearance / 02", desc: "Festival reading, 2024." },
-                    { img: IMG, title: "Appearance / 03", desc: "Studio session, broadcast." },
-                ],
-            };
+            const PLACEHOLDERS = [
+                "assets/placeholder1.jpg",
+                "assets/placeholder2.png",
+                "assets/placeholder3.png",
+                "assets/placeholder4.png",
+            ];
+            function pickThumb() {
+                return PLACEHOLDERS[
+                    Math.floor(Math.random() * PLACEHOLDERS.length)
+                ];
+            }
+            function slugify(s) {
+                return String(s).toLowerCase().trim().replace(/\s+/g, "-");
+            }
+            function parseWorksMd(text) {
+                const chunks = text.split(/^---\s*$/m);
+                const entries = [];
+                for (let i = 1; i + 1 < chunks.length; i += 2) {
+                    const meta = {};
+                    chunks[i]
+                        .trim()
+                        .split("\n")
+                        .forEach((line) => {
+                            const idx = line.indexOf(":");
+                            if (idx === -1) return;
+                            const key = line.slice(0, idx).trim();
+                            const val = line.slice(idx + 1).trim();
+                            if (key) meta[key] = val;
+                        });
+                    meta.description = chunks[i + 1].trim();
+                    entries.push(meta);
+                }
+                return entries;
+            }
+            let data = {};
+            (async () => {
+                try {
+                    const res = await fetch("content/works.md");
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const text = await res.text();
+                    const entries = parseWorksMd(text);
+                    const grouped = {};
+                    for (const e of entries) {
+                        const slug = slugify(e.category || "");
+                        if (!slug) continue;
+                        if (!grouped[slug]) grouped[slug] = [];
+                        grouped[slug].push({
+                            id: e.id || "",
+                            img: e.thumbnail || pickThumb(),
+                            title: e.title || "",
+                            desc: e.description || "",
+                        });
+                    }
+                    data = grouped;
+                } catch (e) {
+                    console.error("[mania] failed to load works.md", e);
+                }
+            })();
             const detailEl = document.querySelector(".detail");
             function escapeHTML(s) {
-                return String(s).replace(/[&<>"']/g, (c) => ({
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#39;",
-                }[c]));
+                return String(s).replace(
+                    /[&<>"']/g,
+                    (c) =>
+                        ({
+                            "&": "&amp;",
+                            "<": "&lt;",
+                            ">": "&gt;",
+                            '"': "&quot;",
+                            "'": "&#39;",
+                        })[c],
+                );
             }
             function renderProjects(projects) {
                 detailEl.innerHTML = projects
                     .map(
                         (p) => `
-                            <div class="project">
+                            <div class="project" data-id="${escapeHTML(p.id)}">
                                 <img src="${escapeHTML(p.img)}" alt="${escapeHTML(p.title)}">
                                 <div class="project-text">
                                     <h3>${escapeHTML(p.title)}</h3>
                                     <p>${escapeHTML(p.desc)}</p>
                                 </div>
                             </div>
-                        `
+                        `,
                     )
                     .join("");
+                detailEl.querySelectorAll(".project").forEach((el) => {
+                    el.addEventListener("click", () =>
+                        openModal(el.dataset.id),
+                    );
+                });
             }
+            const modalEl = document.getElementById("modal");
+            const modalContentEl = modalEl.querySelector(".modal-content");
+            const modalCloseBtn = document.getElementById("modal-close");
+            async function openModal(id) {
+                if (!id) return;
+                try {
+                    const res = await fetch(
+                        `pages/${encodeURIComponent(id)}.html`,
+                    );
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const html = await res.text();
+                    modalContentEl.innerHTML = html;
+                    modalEl.hidden = false;
+                    modalEl.scrollTop = 0;
+                } catch (e) {
+                    console.error("[mania] failed to load page", id, e);
+                }
+            }
+            function closeModal() {
+                modalEl.hidden = true;
+                modalContentEl.innerHTML = "";
+            }
+            modalCloseBtn.addEventListener("click", closeModal);
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && !modalEl.hidden) closeModal();
+            });
             const layout = document.querySelector(".layout");
             const STORAGE_KEY = "mm.cols";
             try {
-                const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+                const saved = JSON.parse(
+                    localStorage.getItem(STORAGE_KEY) || "null",
+                );
                 if (saved) {
-                    if (typeof saved.c1 === "number") layout.style.setProperty("--c1", saved.c1);
-                    if (typeof saved.c2 === "number") layout.style.setProperty("--c2", saved.c2);
-                    if (typeof saved.c3 === "number") layout.style.setProperty("--c3", saved.c3);
+                    if (typeof saved.c1 === "number")
+                        layout.style.setProperty("--c1", saved.c1);
+                    if (typeof saved.c2 === "number")
+                        layout.style.setProperty("--c2", saved.c2);
+                    if (typeof saved.c3 === "number")
+                        layout.style.setProperty("--c3", saved.c3);
                 }
             } catch (e) {}
             const colKey = (which) => `--c${which}`;
@@ -236,7 +313,9 @@
                     drag = {
                         which: h.dataset.h,
                         startX: e.clientX,
-                        startVal: parseFloat(styles.getPropertyValue(colKey(h.dataset.h))),
+                        startVal: parseFloat(
+                            styles.getPropertyValue(colKey(h.dataset.h)),
+                        ),
                         total: layout.offsetWidth,
                     };
                     document.body.style.cursor = "col-resize";
@@ -260,7 +339,10 @@
                 const c2 = parseFloat(styles.getPropertyValue("--c2"));
                 const c3 = parseFloat(styles.getPropertyValue("--c3"));
                 try {
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify({ c1, c2, c3 }));
+                    localStorage.setItem(
+                        STORAGE_KEY,
+                        JSON.stringify({ c1, c2, c3 }),
+                    );
                 } catch (e) {}
             });
 
@@ -269,15 +351,17 @@
                 const pointsCount = 5 + Math.floor(Math.random() * 5);
                 const startAngle = Math.random() * Math.PI * 2;
                 const rotRad = ((Math.random() * 30 - 15) * Math.PI) / 180;
-                const baseJitter = 0.40;
+                const baseJitter = 0.4;
                 const refR = 10;
                 const s = computeScale();
                 const scaleFactor = 1 - s + s * (refR / baseR);
                 const jitter = Math.min(baseJitter, baseJitter * scaleFactor);
-                const radii = Array.from({ length: pointsCount }, () =>
-                    baseR * (1 - jitter + Math.random() * jitter * 2)
+                const radii = Array.from(
+                    { length: pointsCount },
+                    () => baseR * (1 - jitter + Math.random() * jitter * 2),
                 );
-                const cosR = Math.cos(rotRad), sinR = Math.sin(rotRad);
+                const cosR = Math.cos(rotRad),
+                    sinR = Math.sin(rotRad);
                 const pts = [];
                 for (let i = 0; i < pointsCount; i++) {
                     const a = startAngle + (i / pointsCount) * Math.PI * 2;
@@ -294,19 +378,37 @@
                     const p2 = pts[(i + 1) % n];
                     const p3 = pts[(i + 2) % n];
                     ctrl.push([
-                        [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6],
-                        [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6],
+                        [
+                            p1[0] + (p2[0] - p0[0]) / 6,
+                            p1[1] + (p2[1] - p0[1]) / 6,
+                        ],
+                        [
+                            p2[0] - (p3[0] - p1[0]) / 6,
+                            p2[1] - (p3[1] - p1[1]) / 6,
+                        ],
                     ]);
                 }
-                let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+                let minX = Infinity,
+                    minY = Infinity,
+                    maxX = -Infinity,
+                    maxY = -Infinity;
                 for (let i = 0; i < n; i++) {
                     const p1 = pts[i];
                     const p2 = pts[(i + 1) % n];
                     const [c1, c2] = ctrl[i];
                     for (let t = 0; t <= 24; t++) {
-                        const u = t / 24, mu = 1 - u;
-                        const x = mu * mu * mu * p1[0] + 3 * mu * mu * u * c1[0] + 3 * mu * u * u * c2[0] + u * u * u * p2[0];
-                        const y = mu * mu * mu * p1[1] + 3 * mu * mu * u * c1[1] + 3 * mu * u * u * c2[1] + u * u * u * p2[1];
+                        const u = t / 24,
+                            mu = 1 - u;
+                        const x =
+                            mu * mu * mu * p1[0] +
+                            3 * mu * mu * u * c1[0] +
+                            3 * mu * u * u * c2[0] +
+                            u * u * u * p2[0];
+                        const y =
+                            mu * mu * mu * p1[1] +
+                            3 * mu * mu * u * c1[1] +
+                            3 * mu * u * u * c2[1] +
+                            u * u * u * p2[1];
                         if (x < minX) minX = x;
                         if (y < minY) minY = y;
                         if (x > maxX) maxX = x;
@@ -314,9 +416,14 @@
                     }
                 }
                 const pad = stroke / 2 + 0.5;
-                minX -= pad; minY -= pad; maxX += pad; maxY += pad;
-                const w = maxX - minX, h = maxY - minY;
-                const offX = -minX, offY = -minY;
+                minX -= pad;
+                minY -= pad;
+                maxX += pad;
+                maxY += pad;
+                const w = maxX - minX,
+                    h = maxY - minY;
+                const offX = -minX,
+                    offY = -minY;
                 let d = `M ${(pts[0][0] + offX).toFixed(2)} ${(pts[0][1] + offY).toFixed(2)}`;
                 for (let i = 0; i < n; i++) {
                     const p2 = pts[(i + 1) % n];
@@ -350,15 +457,160 @@
             const PMODE_KEY = "mm.pmode";
             const scaleSlider = document.getElementById("scale-slider");
             const TRACKS_KEY = "mm.tracks";
-            const HARDCODED_ENVELOPE = [{"t":0,"v":0},{"t":1699,"v":0.024},{"t":1723,"v":0.025},{"t":1728,"v":0.026},{"t":1741,"v":0.027},{"t":1744,"v":0.028},{"t":1757,"v":0.029},{"t":1761,"v":0.03},{"t":1778,"v":0.031},{"t":1794,"v":0.032},{"t":1842,"v":0.033},{"t":1899,"v":0.034},{"t":2257,"v":0.035},{"t":2282,"v":0.036},{"t":2329,"v":0.037},{"t":2370,"v":0.038},{"t":2404,"v":0.039},{"t":2491,"v":0.04},{"t":2541,"v":0.041},{"t":2574,"v":0.042},{"t":2633,"v":0.043},{"t":2662,"v":0.044},{"t":2687,"v":0.045},{"t":2711,"v":0.046},{"t":2756,"v":0.047},{"t":2773,"v":0.048},{"t":2795,"v":0.049},{"t":2816,"v":0.05},{"t":2859,"v":0.051},{"t":2883,"v":0.052},{"t":2908,"v":0.053},{"t":2933,"v":0.054},{"t":2958,"v":0.055},{"t":3012,"v":0.056},{"t":3040,"v":0.057},{"t":3073,"v":0.058},{"t":3149,"v":0.059},{"t":3199,"v":0.06},{"t":3245,"v":0.061},{"t":3357,"v":0.062},{"t":3431,"v":0.063},{"t":6170,"v":0.064},{"t":6224,"v":0.065},{"t":6258,"v":0.066},{"t":6332,"v":0.067},{"t":6378,"v":0.068},{"t":6421,"v":0.069},{"t":6503,"v":0.07},{"t":6577,"v":0.071},{"t":6610,"v":0.072},{"t":6695,"v":0.073},{"t":6746,"v":0.074},{"t":6778,"v":0.075},{"t":6875,"v":0.076},{"t":6916,"v":0.077},{"t":6995,"v":0.078},{"t":7037,"v":0.079},{"t":7071,"v":0.08},{"t":7154,"v":0.081},{"t":7200,"v":0.082},{"t":7244,"v":0.083},{"t":7333,"v":0.084},{"t":7370,"v":0.085},{"t":7420,"v":0.086},{"t":7529,"v":0.087},{"t":7567,"v":0.088},{"t":7611,"v":0.089},{"t":7683,"v":0.09},{"t":7716,"v":0.091},{"t":7746,"v":0.092},{"t":7795,"v":0.093},{"t":7820,"v":0.094},{"t":7845,"v":0.095},{"t":7870,"v":0.096},{"t":7924,"v":0.097},{"t":7950,"v":0.098},{"t":7973,"v":0.099},{"t":7991,"v":0.1},{"t":8045,"v":0.101},{"t":8070,"v":0.102},{"t":8106,"v":0.103},{"t":8162,"v":0.104},{"t":8204,"v":0.105},{"t":8225,"v":0.106},{"t":8258,"v":0.107},{"t":8333,"v":0.108},{"t":8375,"v":0.109},{"t":8412,"v":0.11},{"t":8553,"v":0.111},{"t":8641,"v":0.112},{"t":11103,"v":0.113},{"t":11128,"v":0.114},{"t":11162,"v":0.115},{"t":11212,"v":0.116},{"t":11245,"v":0.117},{"t":11285,"v":0.118},{"t":11318,"v":0.119},{"t":11394,"v":0.12},{"t":11425,"v":0.121},{"t":11454,"v":0.122},{"t":11554,"v":0.123},{"t":11591,"v":0.124},{"t":11658,"v":0.125},{"t":11762,"v":0.126},{"t":11821,"v":0.127},{"t":12003,"v":0.128},{"t":12428,"v":0.129},{"t":12863,"v":0.13},{"t":12929,"v":0.131},{"t":12975,"v":0.132},{"t":13058,"v":0.133},{"t":13091,"v":0.134},{"t":13124,"v":0.135},{"t":13187,"v":0.136},{"t":13221,"v":0.137},{"t":13262,"v":0.138},{"t":13399,"v":0.139},{"t":20303,"v":0.138},{"t":20415,"v":0.137},{"t":20449,"v":0.136},{"t":20482,"v":0.135},{"t":20532,"v":0.134},{"t":20578,"v":0.133},{"t":20653,"v":0.132},{"t":20782,"v":0.131},{"t":20849,"v":0.13},{"t":20903,"v":0.129},{"t":21037,"v":0.128},{"t":21102,"v":0.127},{"t":21153,"v":0.126},{"t":21216,"v":0.125},{"t":21303,"v":0.124},{"t":21370,"v":0.123},{"t":23000,"v":0.1223},{"t":30000,"v":0}];
+            const HARDCODED_ENVELOPE = [
+                { t: 0, v: 0 },
+                { t: 1699, v: 0.024 },
+                { t: 1723, v: 0.025 },
+                { t: 1728, v: 0.026 },
+                { t: 1741, v: 0.027 },
+                { t: 1744, v: 0.028 },
+                { t: 1757, v: 0.029 },
+                { t: 1761, v: 0.03 },
+                { t: 1778, v: 0.031 },
+                { t: 1794, v: 0.032 },
+                { t: 1842, v: 0.033 },
+                { t: 1899, v: 0.034 },
+                { t: 2257, v: 0.035 },
+                { t: 2282, v: 0.036 },
+                { t: 2329, v: 0.037 },
+                { t: 2370, v: 0.038 },
+                { t: 2404, v: 0.039 },
+                { t: 2491, v: 0.04 },
+                { t: 2541, v: 0.041 },
+                { t: 2574, v: 0.042 },
+                { t: 2633, v: 0.043 },
+                { t: 2662, v: 0.044 },
+                { t: 2687, v: 0.045 },
+                { t: 2711, v: 0.046 },
+                { t: 2756, v: 0.047 },
+                { t: 2773, v: 0.048 },
+                { t: 2795, v: 0.049 },
+                { t: 2816, v: 0.05 },
+                { t: 2859, v: 0.051 },
+                { t: 2883, v: 0.052 },
+                { t: 2908, v: 0.053 },
+                { t: 2933, v: 0.054 },
+                { t: 2958, v: 0.055 },
+                { t: 3012, v: 0.056 },
+                { t: 3040, v: 0.057 },
+                { t: 3073, v: 0.058 },
+                { t: 3149, v: 0.059 },
+                { t: 3199, v: 0.06 },
+                { t: 3245, v: 0.061 },
+                { t: 3357, v: 0.062 },
+                { t: 3431, v: 0.063 },
+                { t: 6170, v: 0.064 },
+                { t: 6224, v: 0.065 },
+                { t: 6258, v: 0.066 },
+                { t: 6332, v: 0.067 },
+                { t: 6378, v: 0.068 },
+                { t: 6421, v: 0.069 },
+                { t: 6503, v: 0.07 },
+                { t: 6577, v: 0.071 },
+                { t: 6610, v: 0.072 },
+                { t: 6695, v: 0.073 },
+                { t: 6746, v: 0.074 },
+                { t: 6778, v: 0.075 },
+                { t: 6875, v: 0.076 },
+                { t: 6916, v: 0.077 },
+                { t: 6995, v: 0.078 },
+                { t: 7037, v: 0.079 },
+                { t: 7071, v: 0.08 },
+                { t: 7154, v: 0.081 },
+                { t: 7200, v: 0.082 },
+                { t: 7244, v: 0.083 },
+                { t: 7333, v: 0.084 },
+                { t: 7370, v: 0.085 },
+                { t: 7420, v: 0.086 },
+                { t: 7529, v: 0.087 },
+                { t: 7567, v: 0.088 },
+                { t: 7611, v: 0.089 },
+                { t: 7683, v: 0.09 },
+                { t: 7716, v: 0.091 },
+                { t: 7746, v: 0.092 },
+                { t: 7795, v: 0.093 },
+                { t: 7820, v: 0.094 },
+                { t: 7845, v: 0.095 },
+                { t: 7870, v: 0.096 },
+                { t: 7924, v: 0.097 },
+                { t: 7950, v: 0.098 },
+                { t: 7973, v: 0.099 },
+                { t: 7991, v: 0.1 },
+                { t: 8045, v: 0.101 },
+                { t: 8070, v: 0.102 },
+                { t: 8106, v: 0.103 },
+                { t: 8162, v: 0.104 },
+                { t: 8204, v: 0.105 },
+                { t: 8225, v: 0.106 },
+                { t: 8258, v: 0.107 },
+                { t: 8333, v: 0.108 },
+                { t: 8375, v: 0.109 },
+                { t: 8412, v: 0.11 },
+                { t: 8553, v: 0.111 },
+                { t: 8641, v: 0.112 },
+                { t: 11103, v: 0.113 },
+                { t: 11128, v: 0.114 },
+                { t: 11162, v: 0.115 },
+                { t: 11212, v: 0.116 },
+                { t: 11245, v: 0.117 },
+                { t: 11285, v: 0.118 },
+                { t: 11318, v: 0.119 },
+                { t: 11394, v: 0.12 },
+                { t: 11425, v: 0.121 },
+                { t: 11454, v: 0.122 },
+                { t: 11554, v: 0.123 },
+                { t: 11591, v: 0.124 },
+                { t: 11658, v: 0.125 },
+                { t: 11762, v: 0.126 },
+                { t: 11821, v: 0.127 },
+                { t: 12003, v: 0.128 },
+                { t: 12428, v: 0.129 },
+                { t: 12863, v: 0.13 },
+                { t: 12929, v: 0.131 },
+                { t: 12975, v: 0.132 },
+                { t: 13058, v: 0.133 },
+                { t: 13091, v: 0.134 },
+                { t: 13124, v: 0.135 },
+                { t: 13187, v: 0.136 },
+                { t: 13221, v: 0.137 },
+                { t: 13262, v: 0.138 },
+                { t: 13399, v: 0.139 },
+                { t: 20303, v: 0.138 },
+                { t: 20415, v: 0.137 },
+                { t: 20449, v: 0.136 },
+                { t: 20482, v: 0.135 },
+                { t: 20532, v: 0.134 },
+                { t: 20578, v: 0.133 },
+                { t: 20653, v: 0.132 },
+                { t: 20782, v: 0.131 },
+                { t: 20849, v: 0.13 },
+                { t: 20903, v: 0.129 },
+                { t: 21037, v: 0.128 },
+                { t: 21102, v: 0.127 },
+                { t: 21153, v: 0.126 },
+                { t: 21216, v: 0.125 },
+                { t: 21303, v: 0.124 },
+                { t: 21370, v: 0.123 },
+                { t: 23000, v: 0.1223 },
+                { t: 30000, v: 0 },
+            ];
             let tracks = [];
             let activeTrack = 0;
             if (isDebug) {
                 try {
-                    const saved = JSON.parse(localStorage.getItem(TRACKS_KEY) || "null");
-                    if (saved && Array.isArray(saved.tracks) && saved.tracks.length > 0) {
+                    const saved = JSON.parse(
+                        localStorage.getItem(TRACKS_KEY) || "null",
+                    );
+                    if (
+                        saved &&
+                        Array.isArray(saved.tracks) &&
+                        saved.tracks.length > 0
+                    ) {
                         tracks = saved.tracks;
-                        activeTrack = Math.max(0, Math.min(saved.tracks.length - 1, saved.active | 0));
+                        activeTrack = Math.max(
+                            0,
+                            Math.min(saved.tracks.length - 1, saved.active | 0),
+                        );
                     }
                 } catch (e) {}
             }
@@ -372,7 +624,7 @@
                 try {
                     localStorage.setItem(
                         TRACKS_KEY,
-                        JSON.stringify({ active: activeTrack, tracks })
+                        JSON.stringify({ active: activeTrack, tracks }),
                     );
                 } catch (e) {}
             }
@@ -385,19 +637,27 @@
             function envValueAt(tMs) {
                 if (!envelope || envelope.length === 0) return 0;
                 if (tMs <= envelope[0].t) return envelope[0].v;
-                if (tMs >= envelope[envelope.length - 1].t) return envelope[envelope.length - 1].v;
-                let lo = 0, hi = envelope.length - 1;
+                if (tMs >= envelope[envelope.length - 1].t)
+                    return envelope[envelope.length - 1].v;
+                let lo = 0,
+                    hi = envelope.length - 1;
                 while (hi - lo > 1) {
                     const mid = (lo + hi) >> 1;
                     if (envelope[mid].t <= tMs) lo = mid;
                     else hi = mid;
                 }
-                const a = envelope[lo], b = envelope[hi];
+                const a = envelope[lo],
+                    b = envelope[hi];
                 const f = (tMs - a.t) / (b.t - a.t || 1);
                 return a.v + f * (b.v - a.v);
             }
             function computeScale() {
-                if (playing && pmode !== "record" && envelope && envelope.length > 0) {
+                if (
+                    playing &&
+                    pmode !== "record" &&
+                    envelope &&
+                    envelope.length > 0
+                ) {
                     return envValueAt(performance.now() - playStart);
                 }
                 return parseFloat(scaleSlider.value);
@@ -445,7 +705,10 @@
                         const fpsMax = parseFloat(fpsSlider.value);
                         if (state.fps == null) state.fps = fpsMax;
                         const drift = Math.random() < 0.5 ? -1 : 1;
-                        state.fps = Math.max(fpsMin, Math.min(fpsMax, state.fps + drift));
+                        state.fps = Math.max(
+                            fpsMin,
+                            Math.min(fpsMax, state.fps + drift),
+                        );
                         delay = 1000 / state.fps;
                     } else {
                         delay = 1000 / 7;
@@ -476,13 +739,17 @@
                 if (!envelope || envelope.length === 0) {
                     envInfoEl.textContent = "no envelope";
                 } else {
-                    const dur = (envelope[envelope.length - 1].t / 1000).toFixed(1);
+                    const dur = (
+                        envelope[envelope.length - 1].t / 1000
+                    ).toFixed(1);
                     envInfoEl.textContent = `${envelope.length} pts · ${dur}s`;
                 }
             }
             updateEnvInfo();
             scaleSlider.addEventListener("input", () => {
-                scaleValEl.textContent = parseFloat(scaleSlider.value).toFixed(2);
+                scaleValEl.textContent = parseFloat(scaleSlider.value).toFixed(
+                    2,
+                );
                 if (playing && wasRecording) {
                     envelope.push({
                         t: performance.now() - playStart,
@@ -493,7 +760,12 @@
                 }
             });
             function syncScaleDisplayFromPlayback() {
-                if (playing && pmode !== "record" && envelope && envelope.length > 0) {
+                if (
+                    playing &&
+                    pmode !== "record" &&
+                    envelope &&
+                    envelope.length > 0
+                ) {
                     const s = envValueAt(performance.now() - playStart);
                     scaleSlider.value = s;
                     scaleValEl.textContent = s.toFixed(2);
@@ -509,7 +781,9 @@
                     b.classList.toggle("active", b.dataset.pmode === pmode);
                 });
                 if (!isDebug) return;
-                try { localStorage.setItem(PMODE_KEY, pmode); } catch (e) {}
+                try {
+                    localStorage.setItem(PMODE_KEY, pmode);
+                } catch (e) {}
             }
             setPmode(pmode);
             document.querySelectorAll("[data-pmode]").forEach((b) => {
@@ -533,7 +807,11 @@
                 } else {
                     wasRecording = false;
                 }
-                console.log("[mania] startPlay", { pmode, wasRecording, envelope });
+                console.log("[mania] startPlay", {
+                    pmode,
+                    wasRecording,
+                    envelope,
+                });
                 playBtn.textContent = "stop";
                 playBtn.classList.add("active");
             }
@@ -542,7 +820,11 @@
                 playing = false;
                 if (wasRecording && envelope && envelope.length > 0) {
                     saveTracks();
-                    console.log("[mania] saved envelope", envelope.length, "pts");
+                    console.log(
+                        "[mania] saved envelope",
+                        envelope.length,
+                        "pts",
+                    );
                 }
                 wasRecording = false;
                 updateEnvInfo();
@@ -588,7 +870,8 @@
                 tracksListEl.innerHTML = "";
                 tracks.forEach((trk, i) => {
                     const b = document.createElement("button");
-                    b.className = "mode-btn" + (i === activeTrack ? " active" : "");
+                    b.className =
+                        "mode-btn" + (i === activeTrack ? " active" : "");
                     b.textContent = String(i + 1);
                     b.title = `${trk.length} pts`;
                     b.addEventListener("click", () => selectTrack(i));
@@ -620,6 +903,41 @@
             renderTracks();
 
             if (pmode === "autoplay") startPlay();
+            let dotsCollapsed = false;
+            function easeInOutCubic(t) {
+                return t < 0.5
+                    ? 4 * t * t * t
+                    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            }
+            function collapseDots() {
+                if (dotsCollapsed) return;
+                dotsCollapsed = true;
+                document.querySelectorAll(".categories li").forEach((li) => {
+                    const track = li.querySelector(".track");
+                    if (!track) return;
+                    const trackWidth = track.offsetWidth;
+                    const curStr = li.style.getPropertyValue("--pos") || "";
+                    let curPx;
+                    if (curStr.endsWith("%")) {
+                        curPx = (parseFloat(curStr) / 100) * trackWidth;
+                    } else if (curStr.endsWith("px")) {
+                        curPx = parseFloat(curStr);
+                    } else {
+                        curPx = trackWidth * 0.5;
+                    }
+                    const targetPx = -90 + Math.random() * 20;
+                    const duration = 300 + Math.random() * 100;
+                    const startTime = performance.now();
+                    function tick(now) {
+                        const elapsed = now - startTime;
+                        const t = Math.min(1, elapsed / duration);
+                        const px = curPx + (targetPx - curPx) * easeInOutCubic(t);
+                        li.style.setProperty("--pos", `${px.toFixed(2)}px`);
+                        if (t < 1) requestAnimationFrame(tick);
+                    }
+                    requestAnimationFrame(tick);
+                });
+            }
             document.querySelectorAll(".cat").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     document
@@ -628,6 +946,7 @@
                     btn.classList.add("active");
                     const projects = data[btn.dataset.id];
                     if (projects) renderProjects(projects);
+                    collapseDots();
                 });
             });
         </script>
