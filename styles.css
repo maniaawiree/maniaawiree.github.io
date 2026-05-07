@@ -4,7 +4,7 @@ body {
     max-width: 1400px;
     margin: 20px auto 0;
     margin-top: 60px;
-    padding: 1rem;
+    padding: 1rem 6rem;
 }
 
 .layout {
@@ -61,9 +61,7 @@ body {
     position: absolute;
     bottom: 0;
     left: calc(-1 * (var(--c1) / var(--c2)) * 100% - 16px);
-    width: calc(
-        (var(--c1) / var(--c2)) * 100% + 16px + var(--pos, 50%) + 32px
-    );
+    width: calc((var(--c1) / var(--c2)) * 100% + 16px + var(--pos, 50%) + 32px);
     height: 2px;
     background: #000;
     opacity: 0.25;
@@ -77,10 +75,48 @@ body {
     transform: translateX(-50%);
     display: block;
     line-height: 0;
+    transition:
+        left 0.7s ease,
+        transform 0.7s ease,
+        opacity 0.7s ease;
+}
+
+.shelf {
+    transition: width 0.7s ease;
 }
 
 .dot svg {
     display: block;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.project {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.project img {
+    width: 100px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.project-text h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.project-text p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 .handle {

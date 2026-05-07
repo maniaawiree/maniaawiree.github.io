@@ -71,15 +71,7 @@
                 </ul>
             </nav>
 
-            <section class="detail">
-                <article id="artwork">
-                    <img src="assets/example.png" alt="Example artwork" />
-                    <h2 class="artwork-title">Untitled</h2>
-                    <p class="artwork-description">
-                        Select a category on the left.
-                    </p>
-                </article>
-            </section>
+            <section class="detail"></section>
         </main>
 
         <div class="size-bar">
@@ -150,21 +142,82 @@
         </div>
 
         <script>
+            const isDebug = new URLSearchParams(location.search).has("debug");
+            if (!isDebug) {
+                document.querySelector(".size-bar").style.display = "none";
+            }
+            const IMG = "assets/example.png";
             const data = {
-                drawings: { title: "Drawing / 01", desc: "Ink on paper." },
-                poetry: { title: "Poem / 01", desc: "Three stanzas." },
-                photography: { title: "Photograph / 01", desc: "35mm." },
-                video: { title: "Video / 01", desc: "Loop. 12 seconds." },
-                digital: {
-                    title: "Digital Work / 01",
-                    desc: "Generated, then hand-corrected.",
-                },
-                hardware: { title: "Hardware / 01", desc: "Modular setup." },
-                sound: { title: "Sound / 01", desc: "Noise. One take." },
-                appearances: { title: "Appearance / 01", desc: "Past event." },
+                drawings: [
+                    { img: IMG, title: "Drawing / 01", desc: "Ink on paper. Raw line, no erasing." },
+                    { img: IMG, title: "Drawing / 02", desc: "Charcoal study. Loose, fast." },
+                    { img: IMG, title: "Drawing / 03", desc: "Pencil. Single sitting." },
+                    { img: IMG, title: "Drawing / 04", desc: "Marker on cardboard." },
+                ],
+                poetry: [
+                    { img: IMG, title: "Poem / 01", desc: "Three stanzas. Read top to bottom." },
+                    { img: IMG, title: "Poem / 02", desc: "Found text, rearranged." },
+                    { img: IMG, title: "Poem / 03", desc: "One line per breath." },
+                ],
+                photography: [
+                    { img: IMG, title: "Photograph / 01", desc: "35mm. Available light." },
+                    { img: IMG, title: "Photograph / 02", desc: "Polaroid, no scan." },
+                    { img: IMG, title: "Photograph / 03", desc: "Long exposure, wind." },
+                    { img: IMG, title: "Photograph / 04", desc: "Series of 12, untitled." },
+                ],
+                video: [
+                    { img: IMG, title: "Video / 01", desc: "Loop. 12 seconds. No sound." },
+                    { img: IMG, title: "Video / 02", desc: "Stop motion. Paper." },
+                    { img: IMG, title: "Video / 03", desc: "Single take, 4 minutes." },
+                ],
+                digital: [
+                    { img: IMG, title: "Digital Work / 01", desc: "Generated, then hand-corrected." },
+                    { img: IMG, title: "Digital Work / 02", desc: "Plotter print." },
+                    { img: IMG, title: "Digital Work / 03", desc: "Browser-only piece." },
+                    { img: IMG, title: "Digital Work / 04", desc: "Interactive, click to enter." },
+                ],
+                hardware: [
+                    { img: IMG, title: "Hardware / 01", desc: "Modular setup. In progress." },
+                    { img: IMG, title: "Hardware / 02", desc: "Custom controller." },
+                    { img: IMG, title: "Hardware / 03", desc: "Resonant body, contact mics." },
+                ],
+                sound: [
+                    { img: IMG, title: "Sound / 01", desc: "Noise. One take." },
+                    { img: IMG, title: "Sound / 02", desc: "Field recording, summer." },
+                    { img: IMG, title: "Sound / 03", desc: "Drone, 20 minutes." },
+                    { img: IMG, title: "Sound / 04", desc: "Voice, untreated." },
+                ],
+                appearances: [
+                    { img: IMG, title: "Appearance / 01", desc: "Past event. Stage and crowd." },
+                    { img: IMG, title: "Appearance / 02", desc: "Festival reading, 2024." },
+                    { img: IMG, title: "Appearance / 03", desc: "Studio session, broadcast." },
+                ],
             };
-            const titleEl = document.querySelector(".artwork-title");
-            const descEl = document.querySelector(".artwork-description");
+            const detailEl = document.querySelector(".detail");
+            function escapeHTML(s) {
+                return String(s).replace(/[&<>"']/g, (c) => ({
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;",
+                }[c]));
+            }
+            function renderProjects(projects) {
+                detailEl.innerHTML = projects
+                    .map(
+                        (p) => `
+                            <div class="project">
+                                <img src="${escapeHTML(p.img)}" alt="${escapeHTML(p.title)}">
+                                <div class="project-text">
+                                    <h3>${escapeHTML(p.title)}</h3>
+                                    <p>${escapeHTML(p.desc)}</p>
+                                </div>
+                            </div>
+                        `
+                    )
+                    .join("");
+            }
             const layout = document.querySelector(".layout");
             const STORAGE_KEY = "mm.cols";
             try {
@@ -283,8 +336,10 @@
             const currentSlider = document.getElementById("size-current");
             const targetVal = document.getElementById("size-target-val");
             const currentVal = document.getElementById("size-current-val");
-            const savedSize = parseFloat(localStorage.getItem(SIZE_KEY));
-            if (!isNaN(savedSize)) slider.value = savedSize;
+            if (isDebug) {
+                const savedSize = parseFloat(localStorage.getItem(SIZE_KEY));
+                if (!isNaN(savedSize)) slider.value = savedSize;
+            }
             targetVal.textContent = slider.value;
             let currentSize = parseFloat(slider.min);
             function syncCurrent() {
@@ -298,19 +353,22 @@
             const HARDCODED_ENVELOPE = [{"t":0,"v":0},{"t":1699,"v":0.024},{"t":1723,"v":0.025},{"t":1728,"v":0.026},{"t":1741,"v":0.027},{"t":1744,"v":0.028},{"t":1757,"v":0.029},{"t":1761,"v":0.03},{"t":1778,"v":0.031},{"t":1794,"v":0.032},{"t":1842,"v":0.033},{"t":1899,"v":0.034},{"t":2257,"v":0.035},{"t":2282,"v":0.036},{"t":2329,"v":0.037},{"t":2370,"v":0.038},{"t":2404,"v":0.039},{"t":2491,"v":0.04},{"t":2541,"v":0.041},{"t":2574,"v":0.042},{"t":2633,"v":0.043},{"t":2662,"v":0.044},{"t":2687,"v":0.045},{"t":2711,"v":0.046},{"t":2756,"v":0.047},{"t":2773,"v":0.048},{"t":2795,"v":0.049},{"t":2816,"v":0.05},{"t":2859,"v":0.051},{"t":2883,"v":0.052},{"t":2908,"v":0.053},{"t":2933,"v":0.054},{"t":2958,"v":0.055},{"t":3012,"v":0.056},{"t":3040,"v":0.057},{"t":3073,"v":0.058},{"t":3149,"v":0.059},{"t":3199,"v":0.06},{"t":3245,"v":0.061},{"t":3357,"v":0.062},{"t":3431,"v":0.063},{"t":6170,"v":0.064},{"t":6224,"v":0.065},{"t":6258,"v":0.066},{"t":6332,"v":0.067},{"t":6378,"v":0.068},{"t":6421,"v":0.069},{"t":6503,"v":0.07},{"t":6577,"v":0.071},{"t":6610,"v":0.072},{"t":6695,"v":0.073},{"t":6746,"v":0.074},{"t":6778,"v":0.075},{"t":6875,"v":0.076},{"t":6916,"v":0.077},{"t":6995,"v":0.078},{"t":7037,"v":0.079},{"t":7071,"v":0.08},{"t":7154,"v":0.081},{"t":7200,"v":0.082},{"t":7244,"v":0.083},{"t":7333,"v":0.084},{"t":7370,"v":0.085},{"t":7420,"v":0.086},{"t":7529,"v":0.087},{"t":7567,"v":0.088},{"t":7611,"v":0.089},{"t":7683,"v":0.09},{"t":7716,"v":0.091},{"t":7746,"v":0.092},{"t":7795,"v":0.093},{"t":7820,"v":0.094},{"t":7845,"v":0.095},{"t":7870,"v":0.096},{"t":7924,"v":0.097},{"t":7950,"v":0.098},{"t":7973,"v":0.099},{"t":7991,"v":0.1},{"t":8045,"v":0.101},{"t":8070,"v":0.102},{"t":8106,"v":0.103},{"t":8162,"v":0.104},{"t":8204,"v":0.105},{"t":8225,"v":0.106},{"t":8258,"v":0.107},{"t":8333,"v":0.108},{"t":8375,"v":0.109},{"t":8412,"v":0.11},{"t":8553,"v":0.111},{"t":8641,"v":0.112},{"t":11103,"v":0.113},{"t":11128,"v":0.114},{"t":11162,"v":0.115},{"t":11212,"v":0.116},{"t":11245,"v":0.117},{"t":11285,"v":0.118},{"t":11318,"v":0.119},{"t":11394,"v":0.12},{"t":11425,"v":0.121},{"t":11454,"v":0.122},{"t":11554,"v":0.123},{"t":11591,"v":0.124},{"t":11658,"v":0.125},{"t":11762,"v":0.126},{"t":11821,"v":0.127},{"t":12003,"v":0.128},{"t":12428,"v":0.129},{"t":12863,"v":0.13},{"t":12929,"v":0.131},{"t":12975,"v":0.132},{"t":13058,"v":0.133},{"t":13091,"v":0.134},{"t":13124,"v":0.135},{"t":13187,"v":0.136},{"t":13221,"v":0.137},{"t":13262,"v":0.138},{"t":13399,"v":0.139},{"t":20303,"v":0.138},{"t":20415,"v":0.137},{"t":20449,"v":0.136},{"t":20482,"v":0.135},{"t":20532,"v":0.134},{"t":20578,"v":0.133},{"t":20653,"v":0.132},{"t":20782,"v":0.131},{"t":20849,"v":0.13},{"t":20903,"v":0.129},{"t":21037,"v":0.128},{"t":21102,"v":0.127},{"t":21153,"v":0.126},{"t":21216,"v":0.125},{"t":21303,"v":0.124},{"t":21370,"v":0.123},{"t":23000,"v":0.1223},{"t":30000,"v":0}];
             let tracks = [];
             let activeTrack = 0;
-            try {
-                const saved = JSON.parse(localStorage.getItem(TRACKS_KEY) || "null");
-                if (saved && Array.isArray(saved.tracks) && saved.tracks.length > 0) {
-                    tracks = saved.tracks;
-                    activeTrack = Math.max(0, Math.min(saved.tracks.length - 1, saved.active | 0));
-                }
-            } catch (e) {}
+            if (isDebug) {
+                try {
+                    const saved = JSON.parse(localStorage.getItem(TRACKS_KEY) || "null");
+                    if (saved && Array.isArray(saved.tracks) && saved.tracks.length > 0) {
+                        tracks = saved.tracks;
+                        activeTrack = Math.max(0, Math.min(saved.tracks.length - 1, saved.active | 0));
+                    }
+                } catch (e) {}
+            }
             if (tracks.length === 0) {
                 tracks = [HARDCODED_ENVELOPE.slice()];
                 activeTrack = 0;
             }
             let envelope = tracks[activeTrack];
             function saveTracks() {
+                if (!isDebug) return;
                 try {
                     localStorage.setItem(
                         TRACKS_KEY,
@@ -318,7 +376,9 @@
                     );
                 } catch (e) {}
             }
-            let pmode = localStorage.getItem(PMODE_KEY) || "manual";
+            let pmode = isDebug
+                ? localStorage.getItem(PMODE_KEY) || "manual"
+                : "autoplay";
             let playing = false;
             let playStart = 0;
             let wasRecording = false;
@@ -360,8 +420,10 @@
             const FPS_KEY = "mm.fps";
             const fpsSlider = document.getElementById("fps-slider");
             const fpsVal = document.getElementById("fps-val");
-            const savedFps = parseFloat(localStorage.getItem(FPS_KEY));
-            if (!isNaN(savedFps)) fpsSlider.value = savedFps;
+            if (isDebug) {
+                const savedFps = parseFloat(localStorage.getItem(FPS_KEY));
+                if (!isNaN(savedFps)) fpsSlider.value = savedFps;
+            }
             fpsVal.textContent = fpsSlider.value;
             const dotStates = new Map();
             document.querySelectorAll(".dot").forEach((dot) => {
@@ -446,6 +508,7 @@
                 document.querySelectorAll("[data-pmode]").forEach((b) => {
                     b.classList.toggle("active", b.dataset.pmode === pmode);
                 });
+                if (!isDebug) return;
                 try { localStorage.setItem(PMODE_KEY, pmode); } catch (e) {}
             }
             setPmode(pmode);
@@ -563,10 +626,8 @@
                         .querySelectorAll(".cat")
                         .forEach((b) => b.classList.remove("active"));
                     btn.classList.add("active");
-                    const d = data[btn.dataset.id];
-                    if (!d) return;
-                    titleEl.textContent = d.title;
-                    descEl.textContent = d.desc;
+                    const projects = data[btn.dataset.id];
+                    if (projects) renderProjects(projects);
                 });
             });
         </script>
