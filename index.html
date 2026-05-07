@@ -334,23 +334,23 @@
             }
             async function openModal(detailsPath) {
                 if (!detailsPath) return;
+                modalContentEl.style.opacity = "0";
                 try {
-                    modalContentEl.style.opacity = "0";
                     const res = await fetch(detailsPath);
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     const html = await res.text();
                     modalContentEl.innerHTML = html;
                     watchModalImageLoads();
-                    updateModalPosition();
-                    modalEl.hidden = false;
-                    await nextFrame();
-                    await nextFrame();
-                    updateModalScrollSpace();
-                    modalContentEl.style.opacity = "1";
                 } catch (e) {
-                    modalContentEl.style.opacity = "1";
+                    modalContentEl.innerHTML = "<p>page missing</p>";
                     console.error("[mania] failed to load page", detailsPath, e);
                 }
+                updateModalPosition();
+                modalEl.hidden = false;
+                await nextFrame();
+                await nextFrame();
+                updateModalScrollSpace();
+                modalContentEl.style.opacity = "1";
             }
             function closeModal() {
                 modalEl.hidden = true;
