@@ -199,10 +199,10 @@
             function slugify(s) {
                 return String(s).toLowerCase().trim().replace(/\s+/g, "-");
             }
-            function parseWorksMd(text) {
+            function parseContentTxt(text) {
                 const chunks = text.split(/^---\s*$/m);
                 const entries = [];
-                for (let i = 1; i + 1 < chunks.length; i += 2) {
+                for (let i = 0; i + 1 < chunks.length; i += 2) {
                     const meta = {};
                     chunks[i]
                         .trim()
@@ -214,6 +214,7 @@
                             const val = line.slice(idx + 1).trim();
                             if (key) meta[key] = val;
                         });
+                    if (!meta.id) continue;
                     meta.description = chunks[i + 1].trim();
                     entries.push(meta);
                 }
@@ -222,10 +223,10 @@
             let data = {};
             (async () => {
                 try {
-                    const res = await fetch("content/works.md");
+                    const res = await fetch("content/content.txt");
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     const text = await res.text();
-                    const entries = parseWorksMd(text);
+                    const entries = parseContentTxt(text);
                     const grouped = {};
                     for (const e of entries) {
                         const slug = slugify(e.category || "");
@@ -240,7 +241,7 @@
                     }
                     data = grouped;
                 } catch (e) {
-                    console.error("[mania] failed to load works.md", e);
+                    console.error("[mania] failed to load content.txt", e);
                 }
             })();
             const detailEl = document.querySelector(".detail");

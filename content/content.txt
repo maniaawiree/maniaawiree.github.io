@@ -1,3 +1,14 @@
+categories:
+Drawings
+Poetry
+Photography
+Video
+Digital Work
+Hardware
+Sound
+Appearances
+---
+
 ---
 id: drawing-01
 title: Drawing / 01
