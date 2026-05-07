@@ -191,11 +191,6 @@
                 "assets/placeholder3.png",
                 "assets/placeholder4.png",
             ];
-            function pickThumb() {
-                return PLACEHOLDERS[
-                    Math.floor(Math.random() * PLACEHOLDERS.length)
-                ];
-            }
             function slugify(s) {
                 return String(s).toLowerCase().trim().replace(/\s+/g, "-");
             }
@@ -236,15 +231,15 @@
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     const text = await res.text();
                     const entries = parseContentTxt(text);
-                    const works = entries.filter((e) => e.id);
+                    const works = entries.filter((e) => e.title);
                     const grouped = {};
                     for (const e of works) {
                         const slug = slugify(e.category || "");
                         if (!slug) continue;
                         if (!grouped[slug]) grouped[slug] = [];
                         grouped[slug].push({
-                            id: e.id || "",
-                            img: e.thumbnail || pickThumb(),
+                            details: e.details || "",
+                            img: e.thumbnail || "",
                             title: e.title || "",
                             desc: e.description || "",
                         });
@@ -272,7 +267,7 @@
                 detailEl.innerHTML = projects
                     .map(
                         (p) => `
-                            <div class="project" data-id="${escapeHTML(p.id)}">
+                            <div class="project" data-details="${escapeHTML(p.details)}">
                                 <img src="${escapeHTML(p.img)}" alt="${escapeHTML(p.title)}">
                                 <div class="project-text">
                                     <h3>${escapeHTML(p.title)}</h3>
@@ -284,7 +279,7 @@
                     .join("");
                 detailEl.querySelectorAll(".project").forEach((el) => {
                     el.addEventListener("click", () =>
-                        openModal(el.dataset.id),
+                        openModal(el.dataset.details),
                     );
                 });
             }
@@ -337,13 +332,11 @@
             function nextFrame() {
                 return new Promise((resolve) => requestAnimationFrame(resolve));
             }
-            async function openModal(id) {
-                if (!id) return;
+            async function openModal(detailsPath) {
+                if (!detailsPath) return;
                 try {
                     modalContentEl.style.opacity = "0";
-                    const res = await fetch(
-                        `pages/${encodeURIComponent(id)}.html`,
-                    );
+                    const res = await fetch(detailsPath);
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     const html = await res.text();
                     modalContentEl.innerHTML = html;
@@ -356,7 +349,7 @@
                     modalContentEl.style.opacity = "1";
                 } catch (e) {
                     modalContentEl.style.opacity = "1";
-                    console.error("[mania] failed to load page", id, e);
+                    console.error("[mania] failed to load page", detailsPath, e);
                 }
             }
             function closeModal() {

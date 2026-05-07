@@ -11,197 +11,225 @@ Appearances
 ---
 
 ---
-id: drawing-01
 title: Drawing / 01
 category: Drawings
+thumbnail: assets/placeholder1.jpg
+details: pages/drawing-01.html
 description: Ink on paper. Raw line, no erasing.
 ---
 
 ---
-id: drawing-02
 title: Drawing / 02
 category: Drawings
+thumbnail: assets/placeholder2.png
+details: pages/drawing-02.html
 description: Charcoal study. Loose, fast.
 ---
 
 ---
-id: drawing-03
 title: Drawing / 03
 category: Drawings
+thumbnail: assets/placeholder3.png
+details: pages/drawing-03.html
 description: Pencil. Single sitting.
 ---
 
 ---
-id: drawing-04
 title: Drawing / 04
 category: Drawings
+thumbnail: assets/placeholder4.png
+details: pages/drawing-04.html
 description: Marker on cardboard.
 ---
 
 ---
-id: poem-01
 title: Poem / 01
 category: Poetry
+thumbnail: assets/placeholder1.jpg
+details: pages/poem-01.html
 description: Three stanzas. Read top to bottom.
 ---
 
 ---
-id: poem-02
 title: Poem / 02
 category: Poetry
+thumbnail: assets/placeholder2.png
+details: pages/poem-02.html
 description: Found text, rearranged.
 ---
 
 ---
-id: poem-03
 title: Poem / 03
 category: Poetry
+thumbnail: assets/placeholder3.png
+details: pages/poem-03.html
 description: One line per breath.
 ---
 
 ---
-id: photograph-01
 title: Photograph / 01
 category: Photography
+thumbnail: assets/placeholder4.png
+details: pages/photograph-01.html
 description: 35mm. Available light.
 ---
 
 ---
-id: photograph-02
 title: Photograph / 02
 category: Photography
+thumbnail: assets/placeholder1.jpg
+details: pages/photograph-02.html
 description: Polaroid.
 ---
 
 ---
-id: photograph-03
 title: Photograph / 03
 category: Photography
+thumbnail: assets/placeholder2.png
+details: pages/photograph-03.html
 description: Long exposure, wind.
 ---
 
 ---
-id: photograph-04
 title: Photograph / 04
 category: Photography
+thumbnail: assets/placeholder3.png
+details: pages/photograph-04.html
 description: Series of 12, untitled.
 ---
 
 ---
-id: video-01
 title: Video / 01
 category: Video
+thumbnail: assets/placeholder4.png
+details: pages/video-01.html
 description: Loop. 12 seconds. No sound.
 ---
 
 ---
-id: video-02
 title: Video / 02
 category: Video
+thumbnail: assets/placeholder1.jpg
+details: pages/video-02.html
 description: Stop motion. Paper.
 ---
 
 ---
-id: video-03
 title: Video / 03
 category: Video
+thumbnail: assets/placeholder2.png
+details: pages/video-03.html
 description: Single take, 4 minutes.
 ---
 
 ---
-id: digital-work-01
 title: Digital Work / 01
 category: Digital Work
+thumbnail: assets/placeholder3.png
+details: pages/digital-work-01.html
 description: Generated, then hand-corrected.
 ---
 
 ---
-id: digital-work-02
 title: Digital Work / 02
 category: Digital Work
+thumbnail: assets/placeholder4.png
+details: pages/digital-work-02.html
 description: Plotter print.
 ---
 
 ---
-id: digital-work-03
 title: Digital Work / 03
 category: Digital Work
+thumbnail: assets/placeholder1.jpg
+details: pages/digital-work-03.html
 description: Browser-only piece.
 ---
 
 ---
-id: digital-work-04
 title: Digital Work / 04
 category: Digital Work
+thumbnail: assets/placeholder2.png
+details: pages/digital-work-04.html
 description: Interactive, click to enter.
 ---
 
 ---
-id: hardware-01
 title: Hardware / 01
 category: Hardware
+thumbnail: assets/placeholder3.png
+details: pages/hardware-01.html
 description: Modular setup. In progress.
 ---
 
 ---
-id: hardware-02
 title: Hardware / 02
 category: Hardware
+thumbnail: assets/placeholder4.png
+details: pages/hardware-02.html
 description: Custom controller.
 ---
 
 ---
-id: hardware-03
 title: Hardware / 03
 category: Hardware
+thumbnail: assets/placeholder1.jpg
+details: pages/hardware-03.html
 description: Resonant body, contact mics.
 ---
 
 ---
-id: sound-01
 title: Sound / 01
 category: Sound
+thumbnail: assets/placeholder2.png
+details: pages/sound-01.html
 description: Noise. One take.
 ---
 
 ---
-id: sound-02
 title: Sound / 02
 category: Sound
+thumbnail: assets/placeholder3.png
+details: pages/sound-02.html
 description: Field recording, summer.
 ---
 
 ---
-id: sound-03
 title: Sound / 03
 category: Sound
+thumbnail: assets/placeholder4.png
+details: pages/sound-03.html
 description: Drone, 20 minutes.
 ---
 
 ---
-id: sound-04
 title: Sound / 04
 category: Sound
+thumbnail: assets/placeholder1.jpg
+details: pages/sound-04.html
 description: Voice, untreated.
 ---
 
 ---
-id: appearance-01
 title: Appearance / 01
 category: Appearances
+thumbnail: assets/placeholder2.png
+details: pages/appearance-01.html
 description: Past event. Stage and crowd.
 ---
 
 ---
-id: appearance-02
 title: Appearance / 02
 category: Appearances
+thumbnail: assets/placeholder3.png
+details: pages/appearance-02.html
 description: Festival reading, 2024.
 ---
 
 ---
-id: appearance-03
 title: Appearance / 03
 category: Appearances
+thumbnail: assets/placeholder4.png
+details: pages/appearance-03.html
 description: Studio session, broadcast.
 ---
