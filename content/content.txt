@@ -15,7 +15,7 @@ title: Drawing / 01
 category: Drawings
 thumbnail: assets/placeholder1.jpg
 details: pages/drawing-01.html
-description: Ink on paper. Raw line, no erasing.
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
 ---
 
 ---
@@ -23,7 +23,7 @@ title: Drawing / 02
 category: Drawings
 thumbnail: assets/placeholder2.png
 details: pages/drawing-02.html
-description: Charcoal study. Loose, fast.
+description: Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
 ---
 
 ---
@@ -31,7 +31,7 @@ title: Drawing / 03
 category: Drawings
 thumbnail: assets/placeholder3.png
 details: pages/drawing-03.html
-description: Pencil. Single sitting.
+description: Praesent commodo cursus magna, vel scelerisque nisl consectetur et, integer posuere erat.
 ---
 
 ---
@@ -39,7 +39,7 @@ title: Drawing / 04
 category: Drawings
 thumbnail: assets/placeholder4.png
 details: pages/drawing-04.html
-description: Marker on cardboard.
+description: Donec ullamcorper nulla non metus auctor fringilla, curabitur blandit tempus porttitor.
 ---
 
 ---
@@ -47,7 +47,7 @@ title: Poem / 01
 category: Poetry
 thumbnail: assets/placeholder1.jpg
 details: pages/poem-01.html
-description: Three stanzas. Read top to bottom.
+description: Maecenas faucibus mollis interdum, vivamus sagittis lacus vel augue laoreet rutrum.
 ---
 
 ---
@@ -55,7 +55,7 @@ title: Poem / 02
 category: Poetry
 thumbnail: assets/placeholder2.png
 details: pages/poem-02.html
-description: Found text, rearranged.
+description: Cras mattis consectetur purus sit amet fermentum, aenean lacinia bibendum nulla sed.
 ---
 
 ---
@@ -63,7 +63,7 @@ title: Poem / 03
 category: Poetry
 thumbnail: assets/placeholder3.png
 details: pages/poem-03.html
-description: One line per breath.
+description: Nullam id dolor id nibh ultricies vehicula ut id elit, morbi leo risus.
 ---
 
 ---
@@ -71,7 +71,7 @@ title: Photograph / 01
 category: Photography
 thumbnail: assets/placeholder4.png
 details: pages/photograph-01.html
-description: 35mm. Available light.
+description: Etiam porta sem malesuada magna mollis euismod, fusce dapibus tellus ac cursus commodo.
 ---
 
 ---
@@ -79,7 +79,7 @@ title: Photograph / 02
 category: Photography
 thumbnail: assets/placeholder1.jpg
 details: pages/photograph-02.html
-description: Polaroid.
+description: Integer posuere erat a ante venenatis dapibus posuere velit aliquet, sed posuere consectetur.
 ---
 
 ---
@@ -87,7 +87,7 @@ title: Photograph / 03
 category: Photography
 thumbnail: assets/placeholder2.png
 details: pages/photograph-03.html
-description: Long exposure, wind.
+description: Aenean eu leo quam, pellentesque ornare sem lacinia quam venenatis vestibulum.
 ---
 
 ---
@@ -95,7 +95,7 @@ title: Photograph / 04
 category: Photography
 thumbnail: assets/placeholder3.png
 details: pages/photograph-04.html
-description: Series of 12, untitled.
+description: Sed posuere consectetur est at lobortis, nulla vitae elit libero, a pharetra augue.
 ---
 
 ---
@@ -103,7 +103,7 @@ title: Video / 01
 category: Video
 thumbnail: assets/placeholder4.png
 details: pages/video-01.html
-description: Loop. 12 seconds. No sound.
+description: Curabitur blandit tempus porttitor, maecenas sed diam eget risus varius blandit.
 ---
 
 ---
@@ -111,7 +111,7 @@ title: Video / 02
 category: Video
 thumbnail: assets/placeholder1.jpg
 details: pages/video-02.html
-description: Stop motion. Paper.
+description: Morbi leo risus, porta ac consectetur ac, vestibulum at eros, donec sed odio dui.
 ---
 
 ---
@@ -119,7 +119,7 @@ title: Video / 03
 category: Video
 thumbnail: assets/placeholder2.png
 details: pages/video-03.html
-description: Single take, 4 minutes.
+description: Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor, amet fermentum.
 ---
 
 ---
@@ -127,7 +127,7 @@ title: Digital Work / 01
 category: Digital Work
 thumbnail: assets/placeholder3.png
 details: pages/digital-work-01.html
-description: Generated, then hand-corrected.
+description: Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum.
 ---
 
 ---
@@ -135,7 +135,7 @@ title: Digital Work / 02
 category: Digital Work
 thumbnail: assets/placeholder4.png
 details: pages/digital-work-02.html
-description: Plotter print.
+description: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis.
 ---
 
 ---
@@ -143,7 +143,7 @@ title: Digital Work / 03
 category: Digital Work
 thumbnail: assets/placeholder1.jpg
 details: pages/digital-work-03.html
-description: Browser-only piece.
+description: Suspendisse potenti, nam luctus arcu at sapien gravida, vitae posuere massa dignissim.
 ---
 
 ---
@@ -151,7 +151,7 @@ title: Digital Work / 04
 category: Digital Work
 thumbnail: assets/placeholder2.png
 details: pages/digital-work-04.html
-description: Interactive, click to enter.
+description: Aliquam erat volutpat, proin gravida nibh vel velit auctor aliquet aenean sollicitudin.
 ---
 
 ---
@@ -159,7 +159,7 @@ title: Hardware / 01
 category: Hardware
 thumbnail: assets/placeholder3.png
 details: pages/hardware-01.html
-description: Modular setup. In progress.
+description: Nunc dignissim risus id metus, cras ornare tristique elit, vivamus vestibulum nulla.
 ---
 
 ---
@@ -167,7 +167,7 @@ title: Hardware / 02
 category: Hardware
 thumbnail: assets/placeholder4.png
 details: pages/hardware-02.html
-description: Custom controller.
+description: Phasellus ultrices nulla quis nibh, quisque a lectus, donec consectetuer ligula vulputate.
 ---
 
 ---
@@ -175,7 +175,7 @@ title: Hardware / 03
 category: Hardware
 thumbnail: assets/placeholder1.jpg
 details: pages/hardware-03.html
-description: Resonant body, contact mics.
+description: Nam nec ante, sed lacinia urna non tincidunt mattis, tortor neque adipiscing diam.
 ---
 
 ---
@@ -183,7 +183,7 @@ title: Sound / 01
 category: Sound
 thumbnail: assets/placeholder2.png
 details: pages/sound-01.html
-description: Noise. One take.
+description: Proin quam nisl, tincidunt et mattis eget, convallis nec purus, cum sociis natoque.
 ---
 
 ---
@@ -191,7 +191,7 @@ title: Sound / 02
 category: Sound
 thumbnail: assets/placeholder3.png
 details: pages/sound-02.html
-description: Field recording, summer.
+description: Quisque volutpat condimentum velit, class aptent taciti sociosqu ad litora torquent per.
 ---
 
 ---
@@ -199,7 +199,7 @@ title: Sound / 03
 category: Sound
 thumbnail: assets/placeholder4.png
 details: pages/sound-03.html
-description: Drone, 20 minutes.
+description: Nam pretium turpis et arcu, duis arcu tortor, suscipit eget imperdiet nec, imperdiet.
 ---
 
 ---
@@ -207,7 +207,7 @@ title: Sound / 04
 category: Sound
 thumbnail: assets/placeholder1.jpg
 details: pages/sound-04.html
-description: Voice, untreated.
+description: Sed aliquam ultrices mauris, integer ante arcu, accumsan a consectetuer eget, posuere ut.
 ---
 
 ---
@@ -215,7 +215,7 @@ title: Appearance / 01
 category: Appearances
 thumbnail: assets/placeholder2.png
 details: pages/appearance-01.html
-description: Past event. Stage and crowd.
+description: Praesent adipiscing, phasellus ullamcorper ipsum rutrum nunc, nunc nonummy metus vestibulum volutpat.
 ---
 
 ---
@@ -223,7 +223,7 @@ title: Appearance / 02
 category: Appearances
 thumbnail: assets/placeholder3.png
 details: pages/appearance-02.html
-description: Festival reading, 2024.
+description: Ut varius tincidunt libero, phasellus dolor, maecenas vestibulum mollis diam, pellentesque ut neque.
 ---
 
 ---
@@ -231,5 +231,5 @@ title: Appearance / 03
 category: Appearances
 thumbnail: assets/placeholder4.png
 details: pages/appearance-03.html
-description: Studio session, broadcast.
+description: Aenean tellus metus, bibendum sed posuere ac, mattis non nunc, vestibulum fringilla pede.
 ---
