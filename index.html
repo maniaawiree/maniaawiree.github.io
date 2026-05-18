@@ -8,8 +8,8 @@
     <body>
         <main class="layout">
             <div class="handle" data-h="1" title="Drag to resize"></div>
+            <div class="midline"></div>
             <div class="handle" data-h="2" title="Drag to resize"></div>
-            <div class="handle" data-h="3" title="Drag to resize"></div>
             <nav class="categories">
                 <ul>
                     <li>
@@ -293,7 +293,7 @@
             }
             function updateModalPosition() {
                 const h1 = document.querySelector('.handle[data-h="1"]');
-                const h3 = document.querySelector('.handle[data-h="3"]');
+                const h3 = document.querySelector('.handle[data-h="2"]');
                 if (!h1 || !h3) return;
                 const layoutRect = layout.getBoundingClientRect();
                 const left =
@@ -366,7 +366,7 @@
                 updateModalPosition();
                 updateModalScrollSpace();
             });
-            const STORAGE_KEY = "mm.cols";
+            const STORAGE_KEY = "mm.cols.v2";
             try {
                 const saved = JSON.parse(
                     localStorage.getItem(STORAGE_KEY) || "null",
@@ -511,7 +511,7 @@
             }
             document.querySelectorAll(".dot").forEach((d) => {
                 const li = d.closest("li");
-                li.style.setProperty("--pos", `${Math.random() * 88 + 4}%`);
+                li.style.setProperty("--pos", `${Math.random() * 44 + 2}%`);
             });
 
             const SIZE_KEY = "mm.size.v2";
@@ -980,8 +980,28 @@
 
             if (pmode === "autoplay") startPlay();
             let dotsCollapsed = false;
+            let midlineCollapsed = false;
             function easeOutCubic(t) {
                 return 1 - Math.pow(1 - t, 3);
+            }
+            function collapseMidline() {
+                if (midlineCollapsed) return;
+                midlineCollapsed = true;
+                const midline = document.querySelector(".midline");
+                if (!midline) return;
+                const startTime = performance.now();
+                const duration = 700;
+                function tick(now) {
+                    const elapsed = now - startTime;
+                    const t = Math.min(1, elapsed / duration);
+                    const fraction = 1 - easeOutCubic(t);
+                    midline.style.setProperty(
+                        "--midline-fraction",
+                        fraction.toFixed(4),
+                    );
+                    if (t < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
             }
             function collapseDots() {
                 if (dotsCollapsed) return;
@@ -1059,6 +1079,7 @@
                     const projects = data[btn.dataset.id];
                     if (projects) renderProjects(projects);
                     collapseDots();
+                    collapseMidline();
                     fallClickedBlob(btn);
                 });
             });
